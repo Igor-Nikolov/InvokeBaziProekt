@@ -119,32 +119,59 @@
         console.log("Forum Game" + gameName);
 
         $(function () {
-            $.get("/api/Forums", function (data) {
-                console.log(data);
+            if (gameName === undefined) {
+                $.get("/api/Forums", function (data) {
+                    console.log(data);
 
-                var tableBody = $("#tableBody");
+                    var tableBody = $("#tableBody");
 
-                $.each(data, function (index, value) {
-                    var tr = $("<tr></tr>");
+                    $.each(data, function (index, value) {
+                        var tr = $("<tr></tr>");
 
-                    var td = $("<td >" + value.ForumName + " </td>");
-                    tr.append(td);
+                        var td = $("<td >" + value.ForumName + " </td>");
+                        tr.append(td);
 
-                    td = $("<td >" + value.ForumDateTime + " </td>");
-                    tr.append(td);
+                        td = $("<td >" + value.ForumDateTime + " </td>");
+                        tr.append(td);
 
-                    td = $("<td >" + value.GameName + " </td>");
-                    tr.append(td);
+                        td = $("<td >" + value.GameName + " </td>");
+                        tr.append(td);
 
-                    td = $("<td style='display:none'>" + value.ForumID + " </td>");
-                    tr.append(td);
+                        td = $("<td style='display:none'>" + value.ForumID + " </td>");
+                        tr.append(td);
 
-                    tableBody.append(tr);
+                        tableBody.append(tr);
 
+                    });
+                    addRowHandlers();
                 });
-                addRowHandlers();
-            });
+            } else {
+                $.get("/api/Forums/" + gameName, function (data) {
+                    console.log(data);
 
+                    var tableBody = $("#tableBody");
+
+                    $.each(data, function (index, value) {
+                        var tr = $("<tr></tr>");
+
+                        var td = $("<td >" + value.ForumName + " </td>");
+                        tr.append(td);
+
+                        td = $("<td >" + value.ForumDateTime + " </td>");
+                        tr.append(td);
+
+                        td = $("<td >" + value.GameName + " </td>");
+                        tr.append(td);
+
+                        td = $("<td style='display:none'>" + value.ForumID + " </td>");
+                        tr.append(td);
+
+                        tableBody.append(tr);
+
+                    });
+                    addRowHandlers();
+                });
+            }
 
             function addRowHandlers() {
                 var table = document.getElementById("tableBody");
@@ -167,32 +194,6 @@
                 console.log("Add ID");
             }
 
-
-            $.get("/api/Forums/" + gameName, function (data) {
-                console.log(data);
-
-                var tableBody = $("#tableBody");
-
-                $.each(data, function (index, value) {
-                    var tr = $("<tr></tr>");
-
-                    var td = $("<td >" + value.ForumName + " </td>");
-                    tr.append(td);
-
-                    td = $("<td >" + value.ForumDateTime + " </td>");
-                    tr.append(td);
-
-                    td = $("<td >" + value.GameName + " </td>");
-                    tr.append(td);
-
-                    td = $("<td style='display:none'>" + value.ForumID + " </td>");
-                    tr.append(td);
-
-                    tableBody.append(tr);
-
-                });
-                addRowHandlers();
-            });
 
         });
 

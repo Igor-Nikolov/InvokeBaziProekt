@@ -236,7 +236,7 @@ namespace WebApiInvoke.Controllers
         //    }
         //}
         // PUT: api/Games/5
-
+      
         public IHttpActionResult Post(Game igra)
         {
                 // using (var conn = new NpgsqlConnection("Host = localhost; Port = 5432; Username = postgres; Database = invokeTest; "))
