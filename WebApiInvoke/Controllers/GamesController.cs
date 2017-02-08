@@ -226,13 +226,12 @@ namespace WebApiInvoke.Controllers
             }
         }
 
-        
-                       
+
+
         // PUT: api/Games/5
-<<<<<<< HEAD
-      
-        public IHttpActionResult Post(Game igra)
-=======
+
+      //  public IHttpActionResult Post(Game igra) { }
+
 
       /*  public IHttpActionResult Post(Game igra)
 >>>>>>> origin/master
@@ -256,7 +255,7 @@ namespace WebApiInvoke.Controllers
                     return Ok("Added game");
                 }
            }*/
-        
+
         public void Put(int id, [FromBody]string value)
         {
         }
